@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "recipes-backend"
+version = "0.1.0"
+description = ""
+authors = ["Ider Delzo <soloidx@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+flask = "^1.1.2"
+sqlalchemy = "^1.3.18"
+flask-sqlalchemy = "^2.4.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pylint = "^2.5.3"
+flake8 = "^3.8.3"
+mypy = "^0.782"
+sqlalchemy-stubs = "^0.3"
+pytest-cov = "^2.10.0"
+coverage = "^5.1"
+factory-boy = "^2.12.0"
+
+[tool.pylint.format]
+max-line-length = "80"
+
+[tool.pylint.message_control]
+disable = """
+    bad-continuation,
+    missing-function-docstring,
+    missing-module-docstring,
+    missing-class-docstring,
+"""
+
+[tool.pylint.TYPECHECK]
+ignored-classes = "Session, scoped_session"
+ignored-modules= "flask_sqlalchemy"
+
+[tool.mypy]
+plugins = "sqlmypy"
+strict_optional = "False"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
