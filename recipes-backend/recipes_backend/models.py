@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Dict, Optional, List
 
 from flask_sqlalchemy import DefaultMeta  # type: ignore
-from sqlalchemy import or_
+from sqlalchemy import and_
 
 from recipes_backend import db
 from recipes_backend.constants import ENGLISH_STOPWORDS
@@ -168,7 +168,7 @@ def search_recipes(query: str = "") -> List[Recipe]:
 
     recipes = Recipe.query
     if search_cond:
-        recipes = recipes.filter(or_(*search_cond))
+        recipes = recipes.filter(and_(*search_cond))
     print(recipes)
 
     return list(recipes)

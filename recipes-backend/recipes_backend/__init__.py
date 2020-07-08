@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_migrate import Migrate  # type: ignore
 from flask_sqlalchemy import SQLAlchemy  # type: ignore
 
@@ -10,5 +11,6 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+CORS(app)
 
 from recipes_backend import routes  # noqa: E402,F401
